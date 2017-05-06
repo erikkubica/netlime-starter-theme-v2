@@ -1,0 +1,20 @@
+# Define fields
+show_menu:
+    type: yes_no
+    default: yes
+    label: "Show menu?"
+    description: "Specify if you want to show or hide menu"
+slider:
+    type: repeated
+    label: "Slides"
+    desription: "Here you can add slides"
+    fields:
+        title:
+            type: "text"
+            label: "Title"
+        content:
+            type: "editor"
+            label: "Content"
+        image:
+            type: "image"
+            label: "Image"

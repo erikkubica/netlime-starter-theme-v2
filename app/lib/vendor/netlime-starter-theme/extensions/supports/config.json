@@ -1,0 +1,7 @@
+{
+	"class": "ThemeSupports",
+	"supports": {
+		"post-thumbnails": true,
+		"widgets": true
+	}
+}

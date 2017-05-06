@@ -1,0 +1,10 @@
+{
+	"autoload": {
+		"classmap": [
+			"vendor"
+		]
+	},
+	"require": {
+		"symfony/yaml": "^3.2"
+	}
+}

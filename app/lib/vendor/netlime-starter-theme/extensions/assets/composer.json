@@ -1,0 +1,8 @@
+{
+	"name": "netlime-starter-theme/extensions/assets",
+	"autoload": {
+		"psr-0": {
+			"NetLimeTheme\\Extensions\\Assets": ""
+		}
+	}
+}

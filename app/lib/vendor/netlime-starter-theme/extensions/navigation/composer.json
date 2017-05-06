@@ -1,0 +1,8 @@
+{
+	"name": "netlime-starter-theme/extensions/navigation",
+	"autoload": {
+		"psr-0": {
+			"NetLimeTheme\\Extensions\\Navigation": ""
+		}
+	}
+}

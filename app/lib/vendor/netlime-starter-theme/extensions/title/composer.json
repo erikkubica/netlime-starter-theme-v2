@@ -1,0 +1,8 @@
+{
+	"name": "netlime-starter-theme/extensions/title",
+	"autoload": {
+		"psr-0": {
+			"NetLimeTheme\\Extensions\\Title": ""
+		}
+	}
+}

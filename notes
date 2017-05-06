@@ -1,0 +1,10 @@
+Theme will be singleton, so migrate all code from netlime instance to Theme
+
+Plugins will be normal class, extended from a plugins base which will have some base functions
+like get config and other that is actually in netllime instance.
+
+Theme will init modules into protected variable, that will be accessed using like theme()->get("plugin")->getImage();
+
+using render we should also inject the self::$instance as $context and use $context::get("plugin")->getImage();
+
+Reason Everything being a singleton is little dump, even if it looks good.

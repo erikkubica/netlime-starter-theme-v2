@@ -1,0 +1,21 @@
+{
+	"class": "ThemeSidebars",
+	"sidebars": {
+		"sidebar-left": {
+			"name": "Left sidebar",
+			"description": "Place some stuff here",
+			"html_tag": "div",
+			"html_class": "widget box",
+			"heading_tag": "h3",
+			"heading_class": false
+		},
+		"sidebar-right": {
+			"name": "Right sidebar",
+			"description": "Place some stuff here",
+			"html_tag": "dib",
+			"html_class": "widget box",
+			"heading_tag": "h3",
+			"heading_class": false
+		}
+	}
+}
