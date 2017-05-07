@@ -208,6 +208,8 @@ class Theme extends ThemeModuleBase
             # Get some required things
             $sectionTemplate = $this->getConfig("sections")[$key]["template"];
 
+            do_action("before_theme_section_" . $key . "_render");
+
             # If cache is enabled and runtime is production and... then do cache
             if ($this->getConfig("sections")[$key]["cache"] && $this->production && !is_user_logged_in() && !$this->is_post_req && !$this->is_ajax):
                 $cache = $this->module("ThemeCache")->getCache($sectionTemplate);
@@ -215,6 +217,8 @@ class Theme extends ThemeModuleBase
             else:
                 include get_template_directory() . "/" . $sectionTemplate;
             endif;
+
+            do_action("after_theme_section_" . $key . "_render");
 
         endforeach;
 
