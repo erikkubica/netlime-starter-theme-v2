@@ -1,6 +1,8 @@
 # NetLime Starter Theme v2
 ### Extensible WordPress Starter Theme
 
+An primite working demo used for development and then push to git: http://netwpdev.netlime.eu/ 
+
 #### Current features
 - Extensible using "extensions" see functions php and app/lib/vendor/netlime-starter-theme/extensions directory
 - Section oriented (or block, scrap,...)
