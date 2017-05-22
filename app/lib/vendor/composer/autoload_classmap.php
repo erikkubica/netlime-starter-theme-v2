@@ -16,6 +16,7 @@ return array(
     'NetLimeTheme\\Extensions\\ThemeImage' => $vendorDir . '/netlime-starter-theme/extensions/image/ThemeImage.php',
     'NetLimeTheme\\Extensions\\ThemeMenu' => $vendorDir . '/netlime-starter-theme/extensions/menu/ThemeMenu.php',
     'NetLimeTheme\\Extensions\\ThemeNavigation' => $vendorDir . '/netlime-starter-theme/extensions/navigation/ThemeNavigation.php',
+    'NetLimeTheme\\Extensions\\ThemePagination' => $vendorDir . '/netlime-starter-theme/extensions/pagination/ThemePagination.php',
     'NetLimeTheme\\Extensions\\ThemeSidebars' => $vendorDir . '/netlime-starter-theme/extensions/sidebars/ThemeSidebars.php',
     'NetLimeTheme\\Extensions\\ThemeSupports' => $vendorDir . '/netlime-starter-theme/extensions/supports/ThemeSupports.php',
     'NetLimeTheme\\Extensions\\ThemeTitle' => $vendorDir . '/netlime-starter-theme/extensions/title/ThemeTitle.php',
@@ -30,5 +31,5 @@ return array(
     'Symfony\\Component\\Yaml\\Parser' => $vendorDir . '/symfony/yaml/Parser.php',
     'Symfony\\Component\\Yaml\\Unescaper' => $vendorDir . '/symfony/yaml/Unescaper.php',
     'Symfony\\Component\\Yaml\\Yaml' => $vendorDir . '/symfony/yaml/Yaml.php',
-    'wp_bootstrap_navwalker' => $vendorDir . '/netlime-starter-theme/core/lib/wp_bootstrap_navwalker.php',
+    'wp_bootstrap_navwalker' => $vendorDir . '/netlime-starter-theme/extensions/menu/lib/wp_bootstrap_navwalker.php',
 );

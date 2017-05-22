@@ -5,13 +5,28 @@ use NetLimeTheme\Core\Lib\ThemeModuleBase;
 
 class ThemeCache extends ThemeModuleBase
 {
-    protected $cachePath = "";
+    protected $cachePath = WP_CONTENT_DIR . "/cache/theme/";
 
     public function init()
     {
-        $this->cachePath = get_template_directory() . "/app/cache/";
+        do_action("before_theme_cache_init");
+
+        $this->setupCacheDirectory();
         $this->flushOldCache();
         $this->setupFlushCache();
+
+        do_action("after_theme_cache_init");
+    }
+
+    protected function setupCacheDirectory()
+    {
+        do_action("before_theme_cache_setup_directory");
+
+        if (!file_exists($this->cachePath)):
+            mkdir($this->cachePath, 0755, true);
+        endif;
+
+        do_action("before_theme_cache_setup_directory");
     }
 
     /**

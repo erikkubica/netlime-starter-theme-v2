@@ -16,6 +16,7 @@ add_action("after_theme_autoload_modules", function () {
     theme()->registerModule("ThemeSidebars", new \NetLimeTheme\Extensions\ThemeSidebars());
     theme()->registerModule("ThemeSupports", new \NetLimeTheme\Extensions\ThemeSupports());
     theme()->registerModule("ThemeTitle", new \NetLimeTheme\Extensions\ThemeTitle());
+    theme()->registerModule("ThemePagination", new \NetLimeTheme\Extensions\ThemePagination());
 });
 
 ### Do before render

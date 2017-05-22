@@ -120,7 +120,7 @@ class Theme extends ThemeModuleBase
         do_action("before_theme_add_config", $key);
 
         $base_path = get_template_directory();
-        $config_path = $base_path . "/app/etc/";
+        $config_path = $base_path . "/app/etc/core/";
         if (!isset($this->configs[$key])):
             $parsed = Yaml::parse(file_get_contents($config_path . $key . ".yaml"));
             if (is_array($parsed)):

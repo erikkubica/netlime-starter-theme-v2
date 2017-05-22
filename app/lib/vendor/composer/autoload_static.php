@@ -31,6 +31,7 @@ class ComposerStaticInit82b81877f4a9b1d97b93740bfd0c9075
         'NetLimeTheme\\Extensions\\ThemeImage' => __DIR__ . '/..' . '/netlime-starter-theme/extensions/image/ThemeImage.php',
         'NetLimeTheme\\Extensions\\ThemeMenu' => __DIR__ . '/..' . '/netlime-starter-theme/extensions/menu/ThemeMenu.php',
         'NetLimeTheme\\Extensions\\ThemeNavigation' => __DIR__ . '/..' . '/netlime-starter-theme/extensions/navigation/ThemeNavigation.php',
+        'NetLimeTheme\\Extensions\\ThemePagination' => __DIR__ . '/..' . '/netlime-starter-theme/extensions/pagination/ThemePagination.php',
         'NetLimeTheme\\Extensions\\ThemeSidebars' => __DIR__ . '/..' . '/netlime-starter-theme/extensions/sidebars/ThemeSidebars.php',
         'NetLimeTheme\\Extensions\\ThemeSupports' => __DIR__ . '/..' . '/netlime-starter-theme/extensions/supports/ThemeSupports.php',
         'NetLimeTheme\\Extensions\\ThemeTitle' => __DIR__ . '/..' . '/netlime-starter-theme/extensions/title/ThemeTitle.php',
@@ -45,7 +46,7 @@ class ComposerStaticInit82b81877f4a9b1d97b93740bfd0c9075
         'Symfony\\Component\\Yaml\\Parser' => __DIR__ . '/..' . '/symfony/yaml/Parser.php',
         'Symfony\\Component\\Yaml\\Unescaper' => __DIR__ . '/..' . '/symfony/yaml/Unescaper.php',
         'Symfony\\Component\\Yaml\\Yaml' => __DIR__ . '/..' . '/symfony/yaml/Yaml.php',
-        'wp_bootstrap_navwalker' => __DIR__ . '/..' . '/netlime-starter-theme/core/lib/wp_bootstrap_navwalker.php',
+        'wp_bootstrap_navwalker' => __DIR__ . '/..' . '/netlime-starter-theme/extensions/menu/lib/wp_bootstrap_navwalker.php',
     );
 
     public static function getInitializer(ClassLoader $loader)

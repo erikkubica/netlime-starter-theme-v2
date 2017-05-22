@@ -1,5 +1,4 @@
 {
-	"class": "ThemeCache",
 	"cache": {
 		"type": "fs",
 		"lifetime": 3600,

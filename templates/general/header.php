@@ -8,7 +8,7 @@
                 <span class="icon-bar"></span>
             </button>
             <a class="navbar-brand" href="<?= esc_url(home_url('/')) ?>">
-                Used
+                <?php bloginfo("name") ?>
             </a>
         </div>
 

@@ -1,2 +1,2 @@
 <?php
-the_posts_navigation();
+theme()->module("ThemePagination")->wp_bootstrap_pagination();

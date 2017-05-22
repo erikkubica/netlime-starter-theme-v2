@@ -23,10 +23,10 @@ class ThemeSidebars extends ThemeModuleBase
                     'name' => __($sidebar["name"], 'sections'),
                     'id' => $id,
                     'description' => __($sidebar["description"], 'sections'),
-                    'before_widget' => '<' . $sidebar["html_tag"] . ' class="' . $sidebar["html_class"] . '">',
-                    'after_widget' => '</' . $sidebar["html_tag"] . '>',
-                    'before_title' => '<' . $sidebar["heading_tag"] . ' class="' . $sidebar["heading_class"] . '">',
-                    'after_title' => '</' . $sidebar["heading_tag"] . '>',
+                    'before_widget' => $sidebar["before_widget"],
+                    'after_widget' => $sidebar["after_widget"],
+                    'before_title' => $sidebar["before_title"],
+                    'after_title' => $sidebar["after_title"]
                 ));
             });
         endforeach;

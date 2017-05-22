@@ -4,5 +4,6 @@ theme()->render("2column-right", [
     "header" => "top",
     "post_list" => "content",
     "pagination" => "content",
+    "sidebar_right" => "right",
     "footer" => "bottom"
 ]);

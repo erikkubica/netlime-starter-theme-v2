@@ -7,12 +7,31 @@ class ThemeModuleBase
 
     function __construct()
     {
+        $this->initConfig();
+    }
+
+    protected function initConfig()
+    {
         $class_info = new \ReflectionClass($this);
         $child_dir = dirname($class_info->getFileName());
+        $basename = basename($child_dir);
+
+        # Check if there is config for override
+        $templateConfigDirectory = get_template_directory() . "/app/etc/extensions/";
+
+        if (file_exists($templateConfigDirectory . $basename . "/config.json")):
+            $conf = json_decode(file_get_contents($templateConfigDirectory . $basename . "/config.json"), true);
+            $this->setConfig($conf);
+            return;
+        endif;
+
+        # If no override then include config from inside plugin
         if (file_exists($child_dir . "/config.json")):
             $conf = json_decode(file_get_contents($child_dir . "/config.json"), true);
             $this->setConfig($conf);
         endif;
+
+        return;
     }
 
     /**
