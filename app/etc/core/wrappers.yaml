@@ -1,0 +1,8 @@
+# Define wrappers
+wrappers:
+    2column-right:
+        template: "wrappers/2column-right.php"
+    2column-left:
+        template: "wrappers/2column-left.php"
+    1column:
+        template: "wrappers/1column.php"
