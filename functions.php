@@ -21,7 +21,9 @@ add_action("after_theme_autoload_modules", function () {
 
 ### Do before render
 add_action("before_theme_render", function () {
-    # To not write loop on single or page
+    # To avoid creating the_loop on single*.php or page*.php
+    # If you are not lazy to write while(...) the_post();...
+    # then remove this hook
     if (is_single() || is_page()):
         the_post();
     endif;
