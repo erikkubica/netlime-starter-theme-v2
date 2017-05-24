@@ -71,16 +71,14 @@ class Theme extends ThemeModuleBase
      */
     public function registerModule($key, $instance)
     {
-        do_action("before_theme_module_register", $key, $instance);
+        do_action("before_theme_module_register");
+        apply_filters("before_theme_module_init", $key, $instance);
+
         $this->modules[$key] = $instance;
-
-        do_action("before_theme_module_init", $key, $instance);
-
         $this->module($key)->init();
 
-        do_action("after_theme_module_init", $key, $instance);
-
-        do_action("after_theme_module_register", $key, $instance);
+        apply_filters("after_theme_module_init", $key, $instance);
+        do_action("after_theme_module_register");
     }
 
     /**
@@ -197,6 +195,7 @@ class Theme extends ThemeModuleBase
     public function getContent($location)
     {
         do_action("before_theme_get_content");
+        apply_filters("before_theme_get_content", $location);
 
         foreach ($this->sections as $key => $place):
 
@@ -209,6 +208,7 @@ class Theme extends ThemeModuleBase
             $sectionTemplate = $this->getConfig("sections")[$key]["template"];
 
             do_action("before_theme_section_" . $key . "_render");
+            apply_filters("before_theme_section_render", $key);
 
             # If cache is enabled and runtime is production and... then do cache
             if ($this->getConfig("sections")[$key]["cache"] && $this->production && !is_user_logged_in() && !$this->is_post_req && !$this->is_ajax):
@@ -218,10 +218,16 @@ class Theme extends ThemeModuleBase
                 include get_template_directory() . "/" . $sectionTemplate;
             endif;
 
+            apply_filters("after_theme_section_render", $key);
             do_action("after_theme_section_" . $key . "_render");
-
         endforeach;
 
+        apply_filters("after_theme_get_content", $location);
         do_action("after_theme_get_content");
+    }
+
+    public function isProduction()
+    {
+        return $this->production;
     }
 }

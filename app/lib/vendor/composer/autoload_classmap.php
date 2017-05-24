@@ -13,6 +13,7 @@ return array(
     'NetLimeTheme\\Core\\Theme' => $vendorDir . '/netlime-starter-theme/core/Theme.php',
     'NetLimeTheme\\Extensions\\ThemeAssets' => $vendorDir . '/netlime-starter-theme/extensions/assets/ThemeAssets.php',
     'NetLimeTheme\\Extensions\\ThemeCache' => $vendorDir . '/netlime-starter-theme/extensions/cache/ThemeCache.php',
+    'NetLimeTheme\\Extensions\\ThemeDebug' => $vendorDir . '/netlime-starter-theme/extensions/debug/ThemeDebug.php',
     'NetLimeTheme\\Extensions\\ThemeImage' => $vendorDir . '/netlime-starter-theme/extensions/image/ThemeImage.php',
     'NetLimeTheme\\Extensions\\ThemeMenu' => $vendorDir . '/netlime-starter-theme/extensions/menu/ThemeMenu.php',
     'NetLimeTheme\\Extensions\\ThemeNavigation' => $vendorDir . '/netlime-starter-theme/extensions/navigation/ThemeNavigation.php',

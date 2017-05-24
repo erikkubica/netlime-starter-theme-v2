@@ -28,6 +28,7 @@ class ComposerStaticInit82b81877f4a9b1d97b93740bfd0c9075
         'NetLimeTheme\\Core\\Theme' => __DIR__ . '/..' . '/netlime-starter-theme/core/Theme.php',
         'NetLimeTheme\\Extensions\\ThemeAssets' => __DIR__ . '/..' . '/netlime-starter-theme/extensions/assets/ThemeAssets.php',
         'NetLimeTheme\\Extensions\\ThemeCache' => __DIR__ . '/..' . '/netlime-starter-theme/extensions/cache/ThemeCache.php',
+        'NetLimeTheme\\Extensions\\ThemeDebug' => __DIR__ . '/..' . '/netlime-starter-theme/extensions/debug/ThemeDebug.php',
         'NetLimeTheme\\Extensions\\ThemeImage' => __DIR__ . '/..' . '/netlime-starter-theme/extensions/image/ThemeImage.php',
         'NetLimeTheme\\Extensions\\ThemeMenu' => __DIR__ . '/..' . '/netlime-starter-theme/extensions/menu/ThemeMenu.php',
         'NetLimeTheme\\Extensions\\ThemeNavigation' => __DIR__ . '/..' . '/netlime-starter-theme/extensions/navigation/ThemeNavigation.php',

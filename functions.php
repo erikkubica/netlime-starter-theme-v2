@@ -8,6 +8,11 @@ require_once __DIR__ . "/app/lib/helper.php";
 
 ### Load modules
 add_action("after_theme_autoload_modules", function () {
+
+    if (isset($_GET["debug"])):
+        theme()->registerModule("ThemeDebug", new \NetLimeTheme\Extensions\ThemeDebug());
+    endif;
+
     theme()->registerModule("ThemeAssets", new \NetLimeTheme\Extensions\ThemeAssets());
     theme()->registerModule("ThemeCache", new \NetLimeTheme\Extensions\ThemeCache());
     theme()->registerModule("ThemeImage", new \NetLimeTheme\Extensions\ThemeImage());
@@ -47,5 +52,6 @@ add_action('init', function () {
     });
 });
 
+
 ### Init theme after theme hooks are defined
-theme()->init(true);
+theme()->init(!isset($_GET["devmode"]));
