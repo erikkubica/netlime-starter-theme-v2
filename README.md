@@ -36,4 +36,6 @@ An primite working demo used for development and then push to git: http://netwpd
 ## New feature 25.05.0217
 ### Added debug module (kind of debug toolbar to monitor render and load times)
 
-http://netwpdev.netlime.eu/?debug
+In action: http://netwpdev.netlime.eu/?debug
+
+Code: https://github.com/erikkubica/netlime-starter-theme-v2/tree/master/app/lib/vendor/netlime-starter-theme/extensions/debug
