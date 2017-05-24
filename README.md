@@ -32,3 +32,8 @@ An primite working demo used for development and then push to git: http://netwpd
 - Check wrappers/*.php
 - Check templates/*/*.php
 - Check index.php
+
+## New feature 25.05.0217
+### Added debug module (kind of debug toolbar to monitor render and load times)
+
+http://netwpdev.netlime.eu/?debug
