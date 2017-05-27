@@ -44,7 +44,7 @@ Code: https://github.com/erikkubica/netlime-starter-theme-v2/tree/master/app/lib
 - Download this theme https://github.com/erikkubica/netlime-starter-theme-v2/archive/master.zip
 - Unzip to /wp-content/themes directory of your WordPress installation
 - Activate the theme
-- Place widgets to right sidebar
+- Place widgets to right sidebar (set title to widget, without title html is bugged)
 
 ## Customization
 First you need to follow first three steps in "The simple way for just a bootstrap blog".
