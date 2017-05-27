@@ -6,20 +6,6 @@ namespace Composer\Autoload;
 
 class ComposerStaticInit82b81877f4a9b1d97b93740bfd0c9075
 {
-    public static $prefixLengthsPsr4 = array (
-        'S' => 
-        array (
-            'Symfony\\Component\\Yaml\\' => 23,
-        ),
-    );
-
-    public static $prefixDirsPsr4 = array (
-        'Symfony\\Component\\Yaml\\' => 
-        array (
-            0 => __DIR__ . '/..' . '/symfony/yaml',
-        ),
-    );
-
     public static $classMap = array (
         'ComposerAutoloaderInit82b81877f4a9b1d97b93740bfd0c9075' => __DIR__ . '/..' . '/composer/autoload_real.php',
         'Composer\\Autoload\\ClassLoader' => __DIR__ . '/..' . '/composer/ClassLoader.php',
@@ -29,6 +15,7 @@ class ComposerStaticInit82b81877f4a9b1d97b93740bfd0c9075
         'NetLimeTheme\\Extensions\\ThemeAssets' => __DIR__ . '/..' . '/netlime-starter-theme/extensions/assets/ThemeAssets.php',
         'NetLimeTheme\\Extensions\\ThemeCache' => __DIR__ . '/..' . '/netlime-starter-theme/extensions/cache/ThemeCache.php',
         'NetLimeTheme\\Extensions\\ThemeDebug' => __DIR__ . '/..' . '/netlime-starter-theme/extensions/debug/ThemeDebug.php',
+        'NetLimeTheme\\Extensions\\ThemeDisableEmoji' => __DIR__ . '/..' . '/netlime-starter-theme/extensions/disableemoji/ThemeDisableEmoji.php',
         'NetLimeTheme\\Extensions\\ThemeImage' => __DIR__ . '/..' . '/netlime-starter-theme/extensions/image/ThemeImage.php',
         'NetLimeTheme\\Extensions\\ThemeMenu' => __DIR__ . '/..' . '/netlime-starter-theme/extensions/menu/ThemeMenu.php',
         'NetLimeTheme\\Extensions\\ThemeNavigation' => __DIR__ . '/..' . '/netlime-starter-theme/extensions/navigation/ThemeNavigation.php',
@@ -36,25 +23,12 @@ class ComposerStaticInit82b81877f4a9b1d97b93740bfd0c9075
         'NetLimeTheme\\Extensions\\ThemeSidebars' => __DIR__ . '/..' . '/netlime-starter-theme/extensions/sidebars/ThemeSidebars.php',
         'NetLimeTheme\\Extensions\\ThemeSupports' => __DIR__ . '/..' . '/netlime-starter-theme/extensions/supports/ThemeSupports.php',
         'NetLimeTheme\\Extensions\\ThemeTitle' => __DIR__ . '/..' . '/netlime-starter-theme/extensions/title/ThemeTitle.php',
-        'Symfony\\Component\\Yaml\\Command\\LintCommand' => __DIR__ . '/..' . '/symfony/yaml/Command/LintCommand.php',
-        'Symfony\\Component\\Yaml\\Dumper' => __DIR__ . '/..' . '/symfony/yaml/Dumper.php',
-        'Symfony\\Component\\Yaml\\Escaper' => __DIR__ . '/..' . '/symfony/yaml/Escaper.php',
-        'Symfony\\Component\\Yaml\\Exception\\DumpException' => __DIR__ . '/..' . '/symfony/yaml/Exception/DumpException.php',
-        'Symfony\\Component\\Yaml\\Exception\\ExceptionInterface' => __DIR__ . '/..' . '/symfony/yaml/Exception/ExceptionInterface.php',
-        'Symfony\\Component\\Yaml\\Exception\\ParseException' => __DIR__ . '/..' . '/symfony/yaml/Exception/ParseException.php',
-        'Symfony\\Component\\Yaml\\Exception\\RuntimeException' => __DIR__ . '/..' . '/symfony/yaml/Exception/RuntimeException.php',
-        'Symfony\\Component\\Yaml\\Inline' => __DIR__ . '/..' . '/symfony/yaml/Inline.php',
-        'Symfony\\Component\\Yaml\\Parser' => __DIR__ . '/..' . '/symfony/yaml/Parser.php',
-        'Symfony\\Component\\Yaml\\Unescaper' => __DIR__ . '/..' . '/symfony/yaml/Unescaper.php',
-        'Symfony\\Component\\Yaml\\Yaml' => __DIR__ . '/..' . '/symfony/yaml/Yaml.php',
         'wp_bootstrap_navwalker' => __DIR__ . '/..' . '/netlime-starter-theme/extensions/menu/lib/wp_bootstrap_navwalker.php',
     );
 
     public static function getInitializer(ClassLoader $loader)
     {
         return \Closure::bind(function () use ($loader) {
-            $loader->prefixLengthsPsr4 = ComposerStaticInit82b81877f4a9b1d97b93740bfd0c9075::$prefixLengthsPsr4;
-            $loader->prefixDirsPsr4 = ComposerStaticInit82b81877f4a9b1d97b93740bfd0c9075::$prefixDirsPsr4;
             $loader->classMap = ComposerStaticInit82b81877f4a9b1d97b93740bfd0c9075::$classMap;
 
         }, null, ClassLoader::class);

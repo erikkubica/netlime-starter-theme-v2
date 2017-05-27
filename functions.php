@@ -1,9 +1,10 @@
 <?php
 
 ### If you want to load modules manually set to false
+### Sometimes it´s recommended to have custom order
 define("THEME_AUTOLOAD_MODULES", false);
 
-# Setup theme
+### Setup theme
 require_once __DIR__ . "/app/lib/helper.php";
 
 ### Load modules
@@ -13,6 +14,7 @@ add_action("after_theme_autoload_modules", function () {
         theme()->registerModule("ThemeDebug", new \NetLimeTheme\Extensions\ThemeDebug());
     endif;
 
+    theme()->registerModule("ThemeDisableEmoji", new \NetLimeTheme\Extensions\ThemeDisableEmoji());
     theme()->registerModule("ThemeAssets", new \NetLimeTheme\Extensions\ThemeAssets());
     theme()->registerModule("ThemeCache", new \NetLimeTheme\Extensions\ThemeCache());
     theme()->registerModule("ThemeImage", new \NetLimeTheme\Extensions\ThemeImage());
@@ -24,6 +26,29 @@ add_action("after_theme_autoload_modules", function () {
     theme()->registerModule("ThemePagination", new \NetLimeTheme\Extensions\ThemePagination());
 });
 
+### Register wrappers
+add_action("on_theme_register_wrappers", function () {
+    theme()->registerWrapper("2column-right", "wrappers/2column-right.php");
+    theme()->registerWrapper("2column-left", "wrappers/2column-left.php");
+    theme()->registerWrapper("1column", "wrappers/1column.php");
+});
+
+### Register sections
+add_action("on_theme_register_sections", function () {
+    theme()->registerSection("head", "templates/general/head.php", true);
+    theme()->registerSection("header", "templates/general/header.php", true);
+    theme()->registerSection("footer", "templates/general/footer.php", true);
+    theme()->registerSection("sidebar_right", "templates/general/sidebar_right.php", true);
+    theme()->registerSection("sidebar_left", "templates/general/sidebar_left.php", true);
+    theme()->registerSection("comments", "templates/general/comments.php", true);
+    theme()->registerSection("search_header", "templates/general/search_header.php", true);
+    theme()->registerSection("pagination", "templates/general/pagination.php", true);
+    theme()->registerSection("post_list", "templates/post/list.php", true);
+    theme()->registerSection("post_content", "templates/post/content.php", true);
+    theme()->registerSection("page_content", "templates/page/content.php", true);
+    theme()->registerSection("404_content", "templates/404/content.php", true);
+});
+
 ### Do before render
 add_action("before_theme_render", function () {
     # To avoid creating the_loop on single*.php or page*.php
@@ -33,25 +58,6 @@ add_action("before_theme_render", function () {
         the_post();
     endif;
 });
-
-### Remove emoji in this theme
-add_action('init', function () {
-    remove_action('admin_print_styles', 'print_emoji_styles');
-    remove_action('wp_head', 'print_emoji_detection_script', 7);
-    remove_action('admin_print_scripts', 'print_emoji_detection_script');
-    remove_action('wp_print_styles', 'print_emoji_styles');
-    remove_filter('wp_mail', 'wp_staticize_emoji_for_email');
-    remove_filter('the_content_feed', 'wp_staticize_emoji');
-    remove_filter('comment_text_rss', 'wp_staticize_emoji');
-    add_filter('tiny_mce_plugins', function ($plugins) {
-        if (is_array($plugins)) {
-            return array_diff($plugins, array('wpemoji'));
-        } else {
-            return array();
-        }
-    });
-});
-
 
 ### Init theme after theme hooks are defined
 theme()->init(!isset($_GET["devmode"]));

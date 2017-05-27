@@ -2,15 +2,18 @@
 namespace NetLimeTheme\Core;
 
 use NetLimeTheme\Core\Lib\ThemeModuleBase;
-use Symfony\Component\Yaml\Yaml;
 
 class Theme extends ThemeModuleBase
 {
     protected $modules = [];
-    private $configs = ["wrappers", "sections"];
-    private $production = false;
-    private $sections = [];
-    private $wrapper = false;
+
+    protected $production = false;
+    protected $registeredSections = [];
+    protected $registeredWrappers = [];
+
+    protected $sections = [];
+    protected $wrapper = false;
+
     public $is_ajax = false;
     public $is_post_req = false;
     public $theme_dir;
@@ -41,8 +44,15 @@ class Theme extends ThemeModuleBase
         endif;
         do_action("after_theme_autoload_modules");
 
-        # Core setup
-        $this->initConfig();
+        # Register wrappers
+        do_action("before_theme_register_wrappers");
+        do_action("on_theme_register_wrappers");
+        do_action("after_theme_register_wrappers");
+
+        # Register sections
+        do_action("before_theme_register_sections");
+        do_action("on_theme_register_sections");
+        do_action("after_theme_register_sections");
 
         do_action("after_theme_setup");
     }
@@ -95,58 +105,78 @@ class Theme extends ThemeModuleBase
     }
 
     /**
-     * Initializes theme configuration
+     * Register section to theme. Can be used to override already registered.
+     *
+     * @param string $sectionKey Key that you will referring in templates
+     * @param string $template_path Relative path to php file in theme directory ex.: "templates/general/head.php"
+     * @param bool $cache Enable or disable caching for this section. Defaults to false
      */
-    protected function initConfig()
+    public function registerSection($sectionKey, $template_path, $cache = false)
     {
-        do_action("before_theme_init_config");
-
-        foreach ($this->configs as $c):
-            $this->addConfig($c);
-        endforeach;
-
-        do_action("after_theme_init_config");
+        $this->registeredSections[$sectionKey] = (object)["template" => $template_path, "cache" => $cache];
     }
 
     /**
-     * Add theme config from /app/etc/
+     * Get section by it´s key
      *
-     * @param $key string File name of config from /app/etc/ without extension
+     * @param string $sectionKey
+     * @return \stdClass
+     * @throws \Exception
      */
-    public function addConfig($key)
+    public function getRegisteredSection($sectionKey)
     {
-        do_action("before_theme_add_config", $key);
-
-        $base_path = get_template_directory();
-        $config_path = $base_path . "/app/etc/core/";
-        if (!isset($this->configs[$key])):
-            $parsed = Yaml::parse(file_get_contents($config_path . $key . ".yaml"));
-            if (is_array($parsed)):
-                $this->setConfig(array_merge($parsed, $this->getConfig()));
-            endif;
+        if (!isset($this->registeredSections[$sectionKey])):
+            throw new \Exception("Section \"$sectionKey\" is not registered. Registered sections: " . implode(", ", array_keys($this->registeredSections)));
         endif;
 
-        do_action("after_theme_add_config", $key);
+        return $this->registeredSections[$sectionKey];
+    }
+
+    /**
+     * Register wrapper to theme. Can be used to override already registered.
+     *
+     * @param string $wrapperKey Key that you will referring in templates
+     * @param string $template_path Relative path to php file in theme directory ex.: "wrappers/1column.php"
+     */
+    public function registerWrapper($wrapperKey, $template_path)
+    {
+        $this->registeredWrappers[$wrapperKey] = (object)["template" => $template_path];
+    }
+
+    /**
+     * Get wrapper by it´s key
+     *
+     * @param string $wrapperKey
+     * @return \stdClass
+     * @throws \Exception
+     */
+    public function getRegisteredWrapper($wrapperKey)
+    {
+        if (!isset($this->registeredWrappers[$wrapperKey])):
+            throw new \Exception("Wrapper \"$wrapperKey\" is not registered.. Registered wrappers: " . implode(", ", array_keys($this->registeredWrappers)));
+        endif;
+
+        return $this->registeredWrappers[$wrapperKey];
     }
 
     /**
      * Set wrapper of the template
      *
-     * @param $wrapper string Name of wrapper from wrappers.yaml
+     * @param $wrapperKey string Key of wrapper
      */
-    public function setWrapper($wrapper)
+    public function setWrapper($wrapperKey)
     {
-        do_action("before_theme_set_wrapper", $wrapper);
+        do_action("before_theme_set_wrapper", $wrapperKey);
 
-        $this->wrapper = $wrapper;
+        $this->wrapper = $wrapperKey;
 
-        do_action("after_theme_set_wrapper", $wrapper);
+        do_action("after_theme_set_wrapper", $wrapperKey);
     }
 
     /**
-     * Set sections that will be rendered. /app/etc/sections.yaml
+     * Set sections that will be rendered.
      *
-     * @param $sections array Syntax: array("key" => "location",...)
+     * @param $sections array Syntax: array("sectionKey" => "location",...)
      */
     public function setSections(array $sections)
     {
@@ -160,29 +190,24 @@ class Theme extends ThemeModuleBase
     /**
      * Render template
      *
-     * @param bool|string $wrapper Same as theme()->setWrapper(...)
+     * @param bool|string $wrapperKey Same as theme()->setWrapper(...)
      * @param bool|array $sections Same as theme()->setSections(...)
      */
-    public function render($wrapper = false, $sections = false)
+    public function render($wrapperKey = false, $sections = false)
     {
         do_action("before_theme_render");
 
-        if ($wrapper):
-            $this->setWrapper($wrapper);
+        if ($wrapperKey):
+            $this->setWrapper($wrapperKey);
         endif;
 
         if ($sections):
             $this->setSections($sections);
         endif;
 
-        $wrappers = $this->getConfig("wrappers");
-        $wrapper = $this->wrapper;
+        $wrapper = $this->getRegisteredWrapper($this->wrapper);
 
-        if ($wrapper && isset($wrappers[$wrapper]) && isset($wrappers[$wrapper]["template"])):
-            include get_template_directory() . "/" . $wrappers[$wrapper]["template"];
-        else:
-            die("Wrapper not found, or is not set.");
-        endif;
+        include get_template_directory() . "/" . $wrapper->template;
 
         do_action("after_ntl_render");
     }
@@ -197,29 +222,32 @@ class Theme extends ThemeModuleBase
         do_action("before_theme_get_content");
         apply_filters("before_theme_get_content", $location);
 
-        foreach ($this->sections as $key => $place):
+        foreach ($this->sections as $sectionKey => $place):
 
-            # skip if section is not in given location
-            if ($place != $location || !isset($this->getConfig("sections")[$key])):
+            # Skip if section is not in given location
+            if ($place != $location):
                 continue;
             endif;
 
-            # Get some required things
-            $sectionTemplate = $this->getConfig("sections")[$key]["template"];
+            # Get the section
+            $section = $this->getRegisteredSection($sectionKey);
 
-            do_action("before_theme_section_" . $key . "_render");
-            apply_filters("before_theme_section_render", $key);
+            # Get some required things
+            $sectionTemplate = $section->template;
+
+            do_action("before_theme_section_" . $sectionKey . "_render");
+            apply_filters("before_theme_section_render", $sectionKey);
 
             # If cache is enabled and runtime is production and... then do cache
-            if ($this->getConfig("sections")[$key]["cache"] && $this->production && !is_user_logged_in() && !$this->is_post_req && !$this->is_ajax):
+            if ($section->cache && $this->production && !is_user_logged_in() && !$this->is_post_req && !$this->is_ajax):
                 $cache = $this->module("ThemeCache")->getCache($sectionTemplate);
                 echo $cache !== false ? $cache : $this->module("ThemeCache")->doCache($sectionTemplate);
             else:
                 include get_template_directory() . "/" . $sectionTemplate;
             endif;
 
-            apply_filters("after_theme_section_render", $key);
-            do_action("after_theme_section_" . $key . "_render");
+            apply_filters("after_theme_section_render", $sectionKey);
+            do_action("after_theme_section_" . $sectionKey . "_render");
         endforeach;
 
         apply_filters("after_theme_get_content", $location);
