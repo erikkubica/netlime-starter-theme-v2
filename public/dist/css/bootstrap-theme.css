@@ -562,4 +562,6 @@ fieldset[disabled] .btn-danger.active {
   font-weight: bold;
   color: black;
 }
-/*# sourceMappingURL=bootstrap-theme.css.map */
+.panel-body img{
+  max-width: 100%;
+}

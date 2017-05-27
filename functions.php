@@ -35,7 +35,6 @@ add_action("on_theme_register_wrappers", function () {
 
 ### Register sections
 add_action("on_theme_register_sections", function () {
-    theme()->registerSection("head", "templates/general/head.php", true);
     theme()->registerSection("header", "templates/general/header.php", true);
     theme()->registerSection("footer", "templates/general/footer.php", true);
     theme()->registerSection("sidebar_right", "templates/general/sidebar_right.php", true);

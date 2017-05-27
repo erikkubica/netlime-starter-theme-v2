@@ -13,9 +13,3 @@
         </div>
     </div>
 </footer>
-
-<script>
-	jQuery(function() {
-		jQuery('.match_height').matchHeight();
-	});
-</script>

@@ -2,7 +2,7 @@
 	"assets": {
 		"bootstrap-js": {
 			"type": "js",
-			"file": "/dist/js/bootstrap.min.js",
+			"file": "dist/js/bootstrap.min.js",
 			"footer": true,
 			"dependencies": [
 				"jquery"
@@ -11,23 +11,14 @@
 		},
 		"bootstrap-css": {
 			"type": "css",
-			"file": "/dist/css/bootstrap.min.css",
+			"file": "dist/css/bootstrap.min.css",
 			"dependencies": [
 			],
 			"version": "3.3.7"
 		},
-		"match_height": {
-			"type": "js",
-			"file": "https://cdnjs.cloudflare.com/ajax/libs/jquery.matchHeight/0.7.2/jquery.matchHeight-min.js",
-			"dependencies": [
-				"jquery"
-			],
-			"version": "0.7.2",
-			"footer": true
-		},
 		"bootstrap-theme-css": {
 			"type": "css",
-			"file": "/dist/css/bootstrap-theme.css",
+			"file": "dist/css/bootstrap-theme.css",
 			"dependencies": [
 			],
 			"version": "3.4.7"
