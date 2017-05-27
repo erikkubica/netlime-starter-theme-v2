@@ -15,7 +15,7 @@ An primite working demo used for development and then push to git: http://netwpd
 - Widgets are converted to bootstrap panels
 
 ### Planned
-- Creating a good README.md where everything is explained
+- Creating a good README.md where everything is explained (in progress)
 - Create some tutorials / documentation for usage and extension creation
 - Comment everything + php doc
 - Lot of tests to test extensibility and performance (it´s fast for now)
@@ -163,24 +163,6 @@ ToDo
   - It´s not needed but it´s good to keep the approach how this theme works, by extending modules you can change behaviour of things, and since Assets in theme is module
   it´s good to follow the approach.
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+# Do you like it? You can support by BitCoin or Ethereum
+- BTC: 17SoAmKeikpuW7BzLv9TQh7g9eYihp8XAo
+- ETH: 0xb3694e6a98e5309bdbb86466202fa9be90d54e73
