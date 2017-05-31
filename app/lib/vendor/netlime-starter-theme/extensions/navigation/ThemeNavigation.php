@@ -1,10 +1,13 @@
 <?php
+
 namespace NetLimeTheme\Extensions;
 
 use NetLimeTheme\Core\Lib\ThemeModuleBase;
 
 class ThemeNavigation extends ThemeModuleBase
 {
+    protected $fields = array();
+
     public function init()
     {
         $this->registerNavigation();
@@ -24,3 +27,5 @@ class ThemeNavigation extends ThemeModuleBase
         do_action("after_theme_register_navigation");
     }
 }
+
+?>

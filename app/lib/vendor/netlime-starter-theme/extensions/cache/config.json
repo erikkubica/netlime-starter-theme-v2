@@ -1,7 +1,7 @@
 {
 	"cache": {
 		"type": "fs",
-		"lifetime": 3600,
+		"lifetime": 604800,
 		"minify": false
 	}
 }

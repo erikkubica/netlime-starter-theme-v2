@@ -13,6 +13,8 @@ An primite working demo used for development and then push to git: http://netwpd
 - Extension configuration can be overridden by file, in future maybe with filter.
 - Comes with compiled bootstrap (sorry for that), bootstrap menu walker, bootstrap pagination, bootstrap comments
 - Widgets are converted to bootstrap panels
+- Create MegaMenu using shortcode. Just create new menu item, set "Is MegaMenu" to "Yes" add shortcode that renders 
+your MegaMenu to "Shortcode" field. If these options is not visible, then enable them in "Screen options"
 
 ### Planned
 - Creating a good README.md where everything is explained (in progress)

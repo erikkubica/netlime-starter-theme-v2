@@ -24,6 +24,7 @@ add_action("after_theme_autoload_modules", function () {
     theme()->registerModule("ThemeSupports", new \NetLimeTheme\Extensions\ThemeSupports());
     theme()->registerModule("ThemeTitle", new \NetLimeTheme\Extensions\ThemeTitle());
     theme()->registerModule("ThemePagination", new \NetLimeTheme\Extensions\ThemePagination());
+    theme()->registerModule("ThemeMegaMenu", new \NetLimeTheme\Extensions\ThemeMegaMenu());
 });
 
 ### Register wrappers
@@ -56,6 +57,36 @@ add_action("before_theme_render", function () {
     if (is_single() || is_page()):
         the_post();
     endif;
+});
+
+### Add MegaMenu ShortCode
+add_shortcode('megamenu', function ($atts) {
+    $atts = shortcode_atts(array(
+        'posts' => ""
+    ), $atts, 'megamenu');
+
+    $html = "";
+    $ids = explode(",", $atts["posts"]);
+
+    if (!is_array($ids)) {
+        return "";
+    }
+
+    $posts = get_posts(array("post__in" => $ids));
+
+    if (!is_array($posts)) {
+        return "";
+    }
+
+    $html .= "<div style='border:1px solid black;padding: 1rem;'>";
+    $html .= "<strong>TODO: Style this megamenu to show on hover</strong><br/><br/>";
+    foreach ($posts as $post) {
+        $html .= "<p>" . $post->post_title . "</p>";
+    }
+    $html .= "</div>";
+
+    return $html;
+
 });
 
 ### Init theme after theme hooks are defined
