@@ -16,7 +16,7 @@ class ThemeImage extends ThemeModuleBase
      */
     protected function registerImageSizes()
     {
-        do_action("before_theme_register_sidebars_image-sizes");
+        do_action("before_theme_register_image-sizes");
 
         foreach ($this->getConfig("image-sizes") as $id => $data):
             add_image_size($id, $data["width"], $data["height"], $data["crop"]);

@@ -14,7 +14,7 @@
 
         <?php
         wp_nav_menu(array(
-            'menu' => 'primary-navigation',
+            'theme_location' => 'primary-navigation',
             'container' => 'div',
             'container_class' => 'navbar-collapse collapse',
             'container_id' => 'navbar',
