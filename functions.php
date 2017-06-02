@@ -36,17 +36,22 @@ add_action("on_theme_register_wrappers", function () {
 
 ### Register sections
 add_action("on_theme_register_sections", function () {
-    theme()->registerSection("header", "templates/general/header.php", true);
-    theme()->registerSection("footer", "templates/general/footer.php", true);
-    theme()->registerSection("sidebar_right", "templates/general/sidebar_right.php", true);
-    theme()->registerSection("sidebar_left", "templates/general/sidebar_left.php", true);
-    theme()->registerSection("comments", "templates/general/comments.php", true);
+    /*
     theme()->registerSection("search_header", "templates/general/search_header.php", true);
-    theme()->registerSection("pagination", "templates/general/pagination.php", true);
-    theme()->registerSection("post_list", "templates/post/list.php", true);
-    theme()->registerSection("post_content", "templates/post/content.php", true);
-    theme()->registerSection("page_content", "templates/page/content.php", true);
-    theme()->registerSection("404_content", "templates/404/content.php", true);
+    */
+
+    theme()->registerSection("Comments", new \NetLimeTheme\Sections\Comments(true));
+    theme()->registerSection("Pagination", new \NetLimeTheme\Sections\Pagination(true));
+    theme()->registerSection("Footer",  new \NetLimeTheme\Sections\Footer(true));
+    theme()->registerSection("Header",  new \NetLimeTheme\Sections\Header(true));
+    theme()->registerSection("SidebarRight", new \NetLimeTheme\Sections\SidebarRight(true));
+    theme()->registerSection("SidebarLeft", new \NetLimeTheme\Sections\SidebarLeft(true));
+    theme()->registerSection("Search", new \NetLimeTheme\Sections\Search(true));
+    theme()->registerSection("Post", new \NetLimeTheme\Sections\Post(true));
+    theme()->registerSection("PostList", new \NetLimeTheme\Sections\PostList(true));
+    theme()->registerSection("NotFound", new \NetLimeTheme\Sections\NotFound(true));
+    theme()->registerSection("Page", new \NetLimeTheme\Sections\Page(true));
+    theme()->registerSection("Test", new \NetLimeTheme\Sections\Test(true));
 });
 
 ### Do before render

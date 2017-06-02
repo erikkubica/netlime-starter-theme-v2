@@ -1,7 +1,9 @@
 <?php
+
 namespace NetLimeTheme\Extensions;
 
 use NetLimeTheme\Core\Lib\ThemeModuleBase;
+use NetLimeTheme\Core\Lib\ThemeSectionBase;
 
 class ThemeCache extends ThemeModuleBase
 {
@@ -130,21 +132,23 @@ class ThemeCache extends ThemeModuleBase
     /**
      * Create the cache
      *
-     * @param $sectionTemplate string Name of the template
+     * @param string $sectionKey Key of section as registered
+     * @param ThemeSectionBase $section Section
      * @return string Cached content
      */
-    public function doCache($sectionTemplate)
+    public function doCache($sectionKey, $section)
     {
-        do_action("before_theme_do_cache", $sectionTemplate);
+        do_action("before_theme_do_cache", $sectionKey);
 
         # Get cache file absolute path
-        $file = $this->getCacheFile($sectionTemplate);
+        $file = $this->getCacheFile($sectionKey);
 
         # Start buffering output
         ob_start();
 
         # Render the template
-        include get_template_directory() . "/" . $sectionTemplate;
+        $section->init();
+        $section->render();
 
         $cacheConfig = $this->getConfig("cache");
 

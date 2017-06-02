@@ -1,4 +1,3 @@
-<?php use \NetLimeTheme\Core\Theme; ?>
 <?php if (!have_posts()) : ?>
     <article itemscope itemtype="http://schema.org/ScholarlyArticle">
         <meta itemscope itemprop="mainEntityOfPage" itemType="https://schema.org/WebPage" itemid="https://google.com/article"/>

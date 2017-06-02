@@ -11,7 +11,6 @@
                 <?php bloginfo("name") ?>
             </a>
         </div>
-
         <?php
         wp_nav_menu(array(
             'theme_location' => 'primary-navigation',

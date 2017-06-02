@@ -52,6 +52,9 @@ Code: https://github.com/erikkubica/netlime-starter-theme-v2/tree/master/app/lib
 First you need to follow first three steps in "The simple way for just a bootstrap blog".
 
 ### Creating a "Hello World" section in right sidebar before widgets is rendered
+
+#### This is out of date, i have decided to implement advanced way of creating and using sections. Please refer to "sections" directory and functions.php until readme is not updated.
+
 1. Create a php file templates/hello_world/hello.php with content "Hello World"
 2. Open functions.php and find the "### Register sections" part
 3. Anywhere inside the "on_theme_register_sections" type:

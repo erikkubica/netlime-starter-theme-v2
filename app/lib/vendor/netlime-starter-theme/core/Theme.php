@@ -1,4 +1,5 @@
 <?php
+
 namespace NetLimeTheme\Core;
 
 use NetLimeTheme\Core\Lib\ThemeModuleBase;
@@ -107,20 +108,21 @@ class Theme extends ThemeModuleBase
     /**
      * Register section to theme. Can be used to override already registered.
      *
-     * @param string $sectionKey Key that you will referring in templates
-     * @param string $template_path Relative path to php file in theme directory ex.: "templates/general/head.php"
-     * @param bool $cache Enable or disable caching for this section. Defaults to false
+     * @param string $sectionKey Class name of section to keep some convention
+     * @param string $instance Instance of section
      */
-    public function registerSection($sectionKey, $template_path, $cache = false)
+    public function registerSection($sectionKey, $instance)
     {
-        $this->registeredSections[$sectionKey] = (object)["template" => $template_path, "cache" => $cache];
+        //$this->registeredSections[$sectionKey] = (object)["template" => $template_path, "cache" => $cache, "is_class" => $is_class];
+
+        $this->registeredSections[$sectionKey] = $instance;
     }
 
     /**
      * Get section by it´s key
      *
      * @param string $sectionKey
-     * @return \stdClass
+     * @return \NetLimeTheme\Core\Lib\ThemeSectionBase
      * @throws \Exception
      */
     public function getRegisteredSection($sectionKey)
@@ -222,36 +224,43 @@ class Theme extends ThemeModuleBase
         do_action("before_theme_get_content");
         apply_filters("before_theme_get_content", $location);
 
-        foreach ($this->sections as $sectionKey => $place):
+        foreach ($this->sections as $section_data):
 
-            # Skip if section is not in given location
-            if ($place != $location):
-                continue;
-            endif;
+            $this->renderSection($section_data, $location);
 
-            # Get the section
-            $section = $this->getRegisteredSection($sectionKey);
-
-            # Get some required things
-            $sectionTemplate = $section->template;
-
-            do_action("before_theme_section_" . $sectionKey . "_render");
-            apply_filters("before_theme_section_render", $sectionKey);
-
-            # If cache is enabled and runtime is production and... then do cache
-            if ($section->cache && $this->production && !is_user_logged_in() && !$this->is_post_req && !$this->is_ajax):
-                $cache = $this->module("ThemeCache")->getCache($sectionTemplate);
-                echo $cache !== false ? $cache : $this->module("ThemeCache")->doCache($sectionTemplate);
-            else:
-                include get_template_directory() . "/" . $sectionTemplate;
-            endif;
-
-            apply_filters("after_theme_section_render", $sectionKey);
-            do_action("after_theme_section_" . $sectionKey . "_render");
         endforeach;
 
         apply_filters("after_theme_get_content", $location);
         do_action("after_theme_get_content");
+    }
+
+    public function renderSection($section_data, $location)
+    {
+        $sectionKey = $section_data[0];
+        $place = $section_data[1];
+
+        # Skip if section is not in given location
+        if ($place != $location):
+            return;
+        endif;
+
+        # Get the section
+        $section = $this->getRegisteredSection($sectionKey);
+
+        do_action("before_theme_section_" . $sectionKey . "_render");
+        apply_filters("before_theme_section_render", $sectionKey);
+
+        # If cache is enabled and runtime is production and... then do cache
+        if ($section->cache && $this->production && !is_user_logged_in() && !$this->is_post_req && !$this->is_ajax):
+            $cache = $this->module("ThemeCache")->getCache($sectionKey);
+            echo $cache !== false ? $cache : $this->module("ThemeCache")->doCache($sectionKey, $section);
+        else:
+            $section->init();
+            $section->render();
+        endif;
+
+        apply_filters("after_theme_section_render", $sectionKey);
+        do_action("after_theme_section_" . $sectionKey . "_render");
     }
 
     public function isProduction()
