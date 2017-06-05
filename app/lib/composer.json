@@ -1,9 +1,0 @@
-{
-	"autoload": {
-		"classmap": [
-			"vendor",
-			"../../sections"
-		]
-	},
-	"require": {}
-}

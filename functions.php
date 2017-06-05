@@ -5,7 +5,7 @@
 define("THEME_AUTOLOAD_MODULES", false);
 
 ### Setup theme
-require_once __DIR__ . "/app/lib/helper.php";
+require_once __DIR__ . "/init.php";
 
 ### Load modules
 add_action("after_theme_autoload_modules", function () {

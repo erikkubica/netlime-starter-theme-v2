@@ -1,8 +1,0 @@
-{
-	"name": "netlime-starter-theme/core",
-	"autoload": {
-		"psr-0": {
-			"NetLimeTheme\\Core": ""
-		}
-	}
-}

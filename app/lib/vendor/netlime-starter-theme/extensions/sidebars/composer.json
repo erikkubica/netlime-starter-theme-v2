@@ -1,8 +1,0 @@
-{
-	"name": "netlime-starter-theme/extensions/sidebars",
-	"autoload": {
-		"psr-0": {
-			"NetLimeTheme\\Extensions\\Sidebars": ""
-		}
-	}
-}
