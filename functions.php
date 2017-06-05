@@ -29,9 +29,9 @@ add_action("after_theme_autoload_modules", function () {
 
 ### Register wrappers
 add_action("on_theme_register_wrappers", function () {
-    theme()->registerWrapper("2column-right", "wrappers/2column-right.php");
-    theme()->registerWrapper("2column-left", "wrappers/2column-left.php");
-    theme()->registerWrapper("1column", "wrappers/1column.php");
+    theme()->registerWrapper("2column-right", "view/wrappers/2column-right.php");
+    theme()->registerWrapper("2column-left", "view/wrappers/2column-left.php");
+    theme()->registerWrapper("1column", "view/wrappers/1column.php");
 });
 
 ### Register sections
