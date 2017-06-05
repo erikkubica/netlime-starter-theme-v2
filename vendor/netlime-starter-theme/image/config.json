@@ -1,0 +1,14 @@
+{
+	"image-sizes": {
+		"home-thumbnail": {
+			"width": 748,
+			"height": 200,
+			"crop": true
+		},
+		"offer-thumbnail": {
+			"width": 150,
+			"height": 150,
+			"crop": true
+		}
+	}
+}

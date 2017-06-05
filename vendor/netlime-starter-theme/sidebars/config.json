@@ -1,0 +1,20 @@
+{
+	"sidebars": {
+		"sidebar-left": {
+			"name": "Left sidebar",
+			"description": "Place some stuff here",
+			"before_widget": "<div class='widget panel panel-default'>",
+			"before_title": "<div class='panel-heading'>",
+			"after_title": "</div><div class='panel-body'>",
+			"after_widget": "</div></div>"
+		},
+		"sidebar-right": {
+			"name": "Right sidebar",
+			"description": "Place some stuff here",
+			"before_widget": "<div class='widget panel panel-default'>",
+			"before_title": "<div class='panel-heading'>",
+			"after_title": "</div><div class='panel-body'>",
+			"after_widget": "</div></div>"
+		}
+	}
+}

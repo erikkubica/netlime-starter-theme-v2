@@ -1,0 +1,12 @@
+{
+	"fields": {
+		"megamenu": {
+			"name": "Is MegaMenu? Select \"Yes\" to render shortcode",
+			"type": "bool"
+		},
+		"shortcode": {
+			"name": "Shortcode",
+			"type": "text"
+		}
+	}
+}

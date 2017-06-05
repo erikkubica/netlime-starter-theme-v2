@@ -1,0 +1,8 @@
+{
+	"name": "netlime-starter-theme/debug",
+	"autoload": {
+		"psr-0": {
+			"NetLimeTheme\\Debug": ""
+		}
+	}
+}

@@ -1,0 +1,8 @@
+{
+	"name": "netlime-starter-theme/megamenu",
+	"autoload": {
+		"psr-0": {
+			"NetLimeTheme\\MegaMenu": ""
+		}
+	}
+}

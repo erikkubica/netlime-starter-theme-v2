@@ -1,0 +1,6 @@
+{
+	"supports": {
+		"post-thumbnails": true,
+		"widgets": true
+	}
+}

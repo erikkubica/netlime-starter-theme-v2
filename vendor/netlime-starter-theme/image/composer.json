@@ -1,0 +1,8 @@
+{
+	"name": "netlime-starter-theme/image-sizes",
+	"autoload": {
+		"psr-0": {
+			"NetLimeTheme\\ImageSizes": ""
+		}
+	}
+}

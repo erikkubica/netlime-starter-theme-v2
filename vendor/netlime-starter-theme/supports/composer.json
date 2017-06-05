@@ -1,0 +1,8 @@
+{
+	"name": "netlime-starter-theme/supports",
+	"autoload": {
+		"psr-0": {
+			"NetLimeTheme\\Supports": ""
+		}
+	}
+}

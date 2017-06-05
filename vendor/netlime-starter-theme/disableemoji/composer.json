@@ -1,0 +1,8 @@
+{
+	"name": "netlime-starter-theme/disableemoji",
+	"autoload": {
+		"psr-0": {
+			"NetLimeTheme\\DisableEmoji": ""
+		}
+	}
+}

@@ -1,0 +1,8 @@
+{
+	"name": "netlime-starter-theme/cache",
+	"autoload": {
+		"psr-0": {
+			"NetLimeTheme\\Cache": ""
+		}
+	}
+}
