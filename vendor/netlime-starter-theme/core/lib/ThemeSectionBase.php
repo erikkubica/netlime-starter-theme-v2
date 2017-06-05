@@ -2,7 +2,7 @@
 
 namespace NetLimeTheme\Core\Lib;
 
-class ThemeSectionBase
+class ThemeSectionBase implements ThemeSectionBaseInterface
 {
     public $cache = false;
     public $template = false;
@@ -13,27 +13,53 @@ class ThemeSectionBase
         $this->cache = $cache;
     }
 
-    function init(){
-
+    /**
+     * Initialise the section
+     */
+    function init()
+    {
     }
 
+    /**
+     * Do something before rendering section
+     */
+    public function beforeRender()
+    {
+    }
+
+    /**
+     * Do something after rendering section
+     */
+    public function afterRender()
+    {
+    }
+
+    /**
+     * Render the section
+     */
     public function render()
     {
         if (!file_exists($this->template)):
             throw new \Exception("Template of section is not defined.");
         endif;
-        
+
         $func = $this->closedRender($this->template, $this->data);
         $func();
     }
 
-    protected function closedRender($file, $data)
+    /**
+     * This will close rending into sandbox disallowing to use $this
+     * in the view layer
+     *
+     * @param $file
+     * @param $data
+     * @return mixed
+     */
+    public function closedRender($file, $data)
     {
         return static function () use ($file, $data) {
             extract($data);
             require $file;
         };
     }
-
-
 }

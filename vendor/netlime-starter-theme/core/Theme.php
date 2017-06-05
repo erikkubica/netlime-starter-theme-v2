@@ -250,6 +250,9 @@ class Theme extends ThemeModuleBase
         do_action("before_theme_section_" . $sectionKey . "_render");
         apply_filters("before_theme_section_render", $sectionKey);
 
+        # If needed do something before render without hook
+        $section->beforeRender();
+
         # If cache is enabled and runtime is production and... then do cache
         if ($section->cache && $this->production && !is_user_logged_in() && !$this->is_post_req && !$this->is_ajax):
             $cache = $this->module("ThemeCache")->getCache($sectionKey);
@@ -258,6 +261,9 @@ class Theme extends ThemeModuleBase
             $section->init();
             $section->render();
         endif;
+
+        # If needed do something after render without hook
+        $section->afterRender();
 
         apply_filters("after_theme_section_render", $sectionKey);
         do_action("after_theme_section_" . $sectionKey . "_render");

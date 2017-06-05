@@ -13,6 +13,7 @@ class ComposerStaticInit82b81877f4a9b1d97b93740bfd0c9075
         'Menu_Item_Megamenu_Fields_Walker' => __DIR__ . '/..' . '/netlime-starter-theme/megamenu/Menu_Item_Megamenu_Fields_Walker.php',
         'NetLimeTheme\\Core\\Lib\\ThemeModuleBase' => __DIR__ . '/..' . '/netlime-starter-theme/core/lib/ThemeModuleBase.php',
         'NetLimeTheme\\Core\\Lib\\ThemeSectionBase' => __DIR__ . '/..' . '/netlime-starter-theme/core/lib/ThemeSectionBase.php',
+        'NetLimeTheme\\Core\\Lib\\ThemeSectionBaseInterface' => __DIR__ . '/..' . '/netlime-starter-theme/core/lib/ThemeSectionBaseInterface.php',
         'NetLimeTheme\\Core\\Theme' => __DIR__ . '/..' . '/netlime-starter-theme/core/Theme.php',
         'NetLimeTheme\\Extensions\\ThemeAssets' => __DIR__ . '/..' . '/netlime-starter-theme/assets/ThemeAssets.php',
         'NetLimeTheme\\Extensions\\ThemeCache' => __DIR__ . '/..' . '/netlime-starter-theme/cache/ThemeCache.php',

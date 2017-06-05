@@ -9,5 +9,6 @@ class PostList extends ThemeSectionBase
     function init()
     {
         $this->template = dirname(__FILE__) . "/view/list.php";
+        $this->data["image"] = theme()->module("ThemeImage");
     }
 }

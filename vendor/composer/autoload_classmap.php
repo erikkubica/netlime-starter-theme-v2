@@ -12,6 +12,7 @@ return array(
     'Menu_Item_Megamenu_Fields_Walker' => $vendorDir . '/netlime-starter-theme/megamenu/Menu_Item_Megamenu_Fields_Walker.php',
     'NetLimeTheme\\Core\\Lib\\ThemeModuleBase' => $vendorDir . '/netlime-starter-theme/core/lib/ThemeModuleBase.php',
     'NetLimeTheme\\Core\\Lib\\ThemeSectionBase' => $vendorDir . '/netlime-starter-theme/core/lib/ThemeSectionBase.php',
+    'NetLimeTheme\\Core\\Lib\\ThemeSectionBaseInterface' => $vendorDir . '/netlime-starter-theme/core/lib/ThemeSectionBaseInterface.php',
     'NetLimeTheme\\Core\\Theme' => $vendorDir . '/netlime-starter-theme/core/Theme.php',
     'NetLimeTheme\\Extensions\\ThemeAssets' => $vendorDir . '/netlime-starter-theme/assets/ThemeAssets.php',
     'NetLimeTheme\\Extensions\\ThemeCache' => $vendorDir . '/netlime-starter-theme/cache/ThemeCache.php',
