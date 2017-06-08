@@ -29,6 +29,7 @@ return array(
     'NetLimeTheme\\Sections\\Comments' => $baseDir . '/view/sections/comments/Comments.php',
     'NetLimeTheme\\Sections\\Footer' => $baseDir . '/view/sections/footer/Header.php',
     'NetLimeTheme\\Sections\\Header' => $baseDir . '/view/sections/header/Header.php',
+    'NetLimeTheme\\Sections\\Home' => $baseDir . '/view/sections/home/Home.php',
     'NetLimeTheme\\Sections\\NotFound' => $baseDir . '/view/sections/404/NotFound.php',
     'NetLimeTheme\\Sections\\Page' => $baseDir . '/view/sections/page/Page.php',
     'NetLimeTheme\\Sections\\Pagination' => $baseDir . '/view/sections/pagination/Pagination.php',

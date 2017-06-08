@@ -30,6 +30,7 @@ class ComposerStaticInit82b81877f4a9b1d97b93740bfd0c9075
         'NetLimeTheme\\Sections\\Comments' => __DIR__ . '/../..' . '/view/sections/comments/Comments.php',
         'NetLimeTheme\\Sections\\Footer' => __DIR__ . '/../..' . '/view/sections/footer/Header.php',
         'NetLimeTheme\\Sections\\Header' => __DIR__ . '/../..' . '/view/sections/header/Header.php',
+        'NetLimeTheme\\Sections\\Home' => __DIR__ . '/../..' . '/view/sections/home/Home.php',
         'NetLimeTheme\\Sections\\NotFound' => __DIR__ . '/../..' . '/view/sections/404/NotFound.php',
         'NetLimeTheme\\Sections\\Page' => __DIR__ . '/../..' . '/view/sections/page/Page.php',
         'NetLimeTheme\\Sections\\Pagination' => __DIR__ . '/../..' . '/view/sections/pagination/Pagination.php',

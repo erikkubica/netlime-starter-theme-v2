@@ -59,7 +59,7 @@ class ThemeSectionBase implements ThemeSectionBaseInterface
     {
         return static function () use ($file, $data) {
             extract($data);
-            require $file;
+            include $file;
         };
     }
 }

@@ -8,6 +8,7 @@ use NetLimeTheme\Core\Lib\ThemeSectionBase;
 class ThemeCache extends ThemeModuleBase
 {
     protected $cachePath = WP_CONTENT_DIR . "/cache/theme/";
+    protected $sectionsRendered = [];
 
     public function init()
     {
@@ -115,14 +116,14 @@ class ThemeCache extends ThemeModuleBase
     /**
      * Get absolute path of cache file
      *
-     * @param $sectionTemplate
+     * @param $cacheKey
      * @return string
      */
-    public function getCacheFile($sectionTemplate)
+    public function getCacheFile($cacheKey)
     {
-        do_action("before_theme_get_cache_file", $sectionTemplate);
+        do_action("before_theme_get_cache_file", $cacheKey);
 
-        $filename = md5($_SERVER["HTTP_HOST"] . $_SERVER["REQUEST_URI"] . "-" . $sectionTemplate);
+        $filename = md5($_SERVER["HTTP_HOST"] . $_SERVER["REQUEST_URI"] . "-" . $cacheKey);
 
         do_action("after_theme_get_cache_file", $filename);
 
@@ -134,14 +135,17 @@ class ThemeCache extends ThemeModuleBase
      *
      * @param string $sectionKey Key of section as registered
      * @param ThemeSectionBase $section Section
+     *
      * @return string Cached content
      */
-    public function doCache($sectionKey, $section)
+    public function doCache($sectionKey, &$section)
     {
         do_action("before_theme_do_cache", $sectionKey);
 
+        $cacheKey = $this->getCacheKey($sectionKey, $section);
+
         # Get cache file absolute path
-        $file = $this->getCacheFile($sectionKey);
+        $file = $this->getCacheFile($cacheKey);
 
         # Start buffering output
         ob_start();
@@ -183,15 +187,18 @@ class ThemeCache extends ThemeModuleBase
     /**
      * Get cached html
      *
-     * @param $sectionTemplate
+     * @param $sectionKey
+     * @param ThemeSectionBase $section Section
      * @return bool|mixed|string
      */
-    public function getCache($sectionTemplate)
+    public function getCache($sectionKey, &$section)
     {
-        do_action("before_theme_get_cache", $sectionTemplate);
+        do_action("before_theme_get_cache", $sectionKey);
+
+        $cacheKey = $this->getCacheKey($sectionKey, $section);
 
         # Get cache file absolute path
-        $file = $this->getCacheFile($sectionTemplate);
+        $file = $this->getCacheFile($cacheKey);
 
         # Define variable with false
         $cache = false;
@@ -213,4 +220,14 @@ class ThemeCache extends ThemeModuleBase
         # Return cached html
         return $cache;
     }
+
+    protected function getCacheKey(&$sectionKey, &$section)
+    {
+        if ($section->data !== []):
+            return $sectionKey . md5(json_encode($section->data));
+        endif;
+
+        return $sectionKey;
+    }
+
 }

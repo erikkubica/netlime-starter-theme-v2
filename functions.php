@@ -10,6 +10,10 @@ require_once __DIR__ . "/init.php";
 ### Load modules
 add_action("after_theme_autoload_modules", function () {
 
+    if (THEME_AUTOLOAD_MODULES):
+        return;
+    endif;
+
     if (isset($_GET["debug"])):
         theme()->registerModule("ThemeDebug", new \NetLimeTheme\Extensions\ThemeDebug());
     endif;

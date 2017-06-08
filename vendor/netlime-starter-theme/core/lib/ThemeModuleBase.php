@@ -17,7 +17,7 @@ class ThemeModuleBase
         $basename = basename($child_dir);
 
         # Check if there is config for override
-        $templateConfigDirectory = get_template_directory() . "/app/etc/";
+        $templateConfigDirectory = get_template_directory() . "/etc/";
 
         if (file_exists($templateConfigDirectory . $basename . "/config.json")):
             $conf = json_decode(file_get_contents($templateConfigDirectory . $basename . "/config.json"), true);

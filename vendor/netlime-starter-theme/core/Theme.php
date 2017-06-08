@@ -3,6 +3,7 @@
 namespace NetLimeTheme\Core;
 
 use NetLimeTheme\Core\Lib\ThemeModuleBase;
+use NetLimeTheme\Core\Lib\ThemeSectionBase;
 
 class Theme extends ThemeModuleBase
 {
@@ -63,13 +64,17 @@ class Theme extends ThemeModuleBase
      */
     protected function autoLoadModules()
     {
-        $extDirectory = __DIR__ . DIRECTORY_SEPARATOR . ".." . DIRECTORY_SEPARATOR . "extensions" . DIRECTORY_SEPARATOR;
+        $extDirectory = __DIR__ . DIRECTORY_SEPARATOR . ".." . DIRECTORY_SEPARATOR;
         $extDirectories = glob($extDirectory . "*", GLOB_ONLYDIR);
 
         foreach ($extDirectories as $directory):
+            if (basename($directory) === "core"):
+                continue;
+            endif;
+
             # Get className and classPath
             $className = substr(basename(glob($directory . "*/Theme*.php")[0]), 0, -4);
-            $classPath = '\\NetLimeTheme\\' . $className;
+            $classPath = '\\NetLimeTheme\\Extensions\\' . $className;
             $this->registerModule($className, new $classPath());
         endforeach;
     }
@@ -186,7 +191,7 @@ class Theme extends ThemeModuleBase
 
         $this->sections = $sections;
 
-        do_action("before_theme_set_sections", $sections);
+        do_action("after_theme_set_sections", $sections);
     }
 
     /**
@@ -226,7 +231,13 @@ class Theme extends ThemeModuleBase
 
         foreach ($this->sections as $section_data):
 
-            $this->renderSection($section_data, $location);
+            # Skip if section is not in given location
+            if ($section_data[1] !== $location):
+                continue;
+            endif;
+
+            # Render it
+            $this->renderSection($section_data[0]);
 
         endforeach;
 
@@ -234,18 +245,20 @@ class Theme extends ThemeModuleBase
         do_action("after_theme_get_content");
     }
 
-    public function renderSection($section_data, $location)
+
+    /**
+     * Render section
+     *
+     * @param string $sectionKey The key of section used when registered
+     * @param array $data Section data to render with
+     */
+    public function renderSection($sectionKey, $data = [])
     {
-        $sectionKey = $section_data[0];
-        $place = $section_data[1];
-
-        # Skip if section is not in given location
-        if ($place != $location):
-            return;
-        endif;
-
         # Get the section
         $section = $this->getRegisteredSection($sectionKey);
+
+        # Set section data
+        $section->data = &$data;
 
         do_action("before_theme_section_" . $sectionKey . "_render");
         apply_filters("before_theme_section_render", $sectionKey);
@@ -255,7 +268,7 @@ class Theme extends ThemeModuleBase
 
         # If cache is enabled and runtime is production and... then do cache
         if ($section->cache && $this->production && !is_user_logged_in() && !$this->is_post_req && !$this->is_ajax):
-            $cache = $this->module("ThemeCache")->getCache($sectionKey);
+            $cache = $this->module("ThemeCache")->getCache($sectionKey, $section);
             echo $cache !== false ? $cache : $this->module("ThemeCache")->doCache($sectionKey, $section);
         else:
             $section->init();
