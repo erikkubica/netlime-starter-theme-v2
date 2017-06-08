@@ -1,6 +1,6 @@
 {
-	"name": "netlime-starter-theme/title",
-	"description": "WordPress add title to head extension for NetLime Theme Core",
+	"name": "netlime-starter-theme/pagination",
+	"description": "Pagination extension for NetLime Theme Core",
 	"authors": [
 		{
 			"name": "Erik Kubica",
@@ -15,7 +15,7 @@
 	},
 	"autoload": {
 		"psr-0": {
-			"NetLimeTheme\\Title": ""
+			"NetLimeTheme\\Pagination": ""
 		}
 	}
 }

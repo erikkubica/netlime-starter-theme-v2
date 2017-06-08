@@ -1,5 +1,18 @@
 {
 	"name": "netlime-starter-theme/navigation",
+	"description": "Navigation Menu extension for NetLime Theme Core",
+	"authors": [
+		{
+			"name": "Erik Kubica",
+			"email": "erik.kubica@gmail.com",
+			"homepage": "https://www.netlime.eu",
+			"role": "Developer"
+		}
+	],
+	"require": {
+		"php": "^5.5.38 || ^7.0",
+		"netlime-starter-theme/core": "1.*"
+	},
 	"autoload": {
 		"psr-0": {
 			"NetLimeTheme\\Navigation": ""
