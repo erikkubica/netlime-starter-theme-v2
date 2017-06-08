@@ -5,5 +5,20 @@
 			"view"
 		]
 	},
-	"require": {}
+	"minimum-stability": "dev",
+	"require": {
+		"netlime-theme/core": "dev-master",
+		"netlime-theme/assets": "dev-master",
+		"netlime-theme/cache": "dev-master",
+		"netlime-theme/debug": "dev-master",
+		"netlime-theme/disableemoji": "dev-master",
+		"netlime-theme/image": "dev-master",
+		"netlime-theme/megamenu": "dev-master",
+		"netlime-theme/menu": "dev-master",
+		"netlime-theme/navigation": "dev-master",
+		"netlime-theme/pagination": "dev-master",
+		"netlime-theme/sidebars": "dev-master",
+		"netlime-theme/supports": "dev-master",
+		"netlime-theme/title": "dev-master"
+	}
 }
