@@ -5,20 +5,19 @@
 			"view"
 		]
 	},
-	"minimum-stability": "dev",
 	"require": {
-		"netlime-theme/core": "dev-master",
-		"netlime-theme/assets": "dev-master",
-		"netlime-theme/cache": "dev-master",
-		"netlime-theme/debug": "dev-master",
-		"netlime-theme/disableemoji": "dev-master",
-		"netlime-theme/image": "dev-master",
-		"netlime-theme/megamenu": "dev-master",
-		"netlime-theme/menu": "dev-master",
-		"netlime-theme/navigation": "dev-master",
-		"netlime-theme/pagination": "dev-master",
-		"netlime-theme/sidebars": "dev-master",
-		"netlime-theme/supports": "dev-master",
-		"netlime-theme/title": "dev-master"
+		"netlime-theme/core": "1.0.0",
+		"netlime-theme/assets": "1.0.1",
+		"netlime-theme/cache": "1.0.1",
+		"netlime-theme/title": "1.0.1",
+		"netlime-theme/debug": "1.0.1",
+		"netlime-theme/disableemoji": "1.0.2",
+		"netlime-theme/image": "1.0.1",
+		"netlime-theme/megamenu": "1.0.1",
+		"netlime-theme/menu": "1.0.1",
+		"netlime-theme/navigation": "1.0.1",
+		"netlime-theme/pagination": "1.0.1",
+		"netlime-theme/sidebars": "1.0.1",
+		"netlime-theme/supports": "1.0.1"
 	}
 }
